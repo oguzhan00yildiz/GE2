@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    private bool isShipDriving = false;
+    public bool isShipDriving = false;
     private  CharacterController characterController;
     private ThirdPersonController thirdPersonController;
     private Animator animator;
@@ -24,13 +24,11 @@ public class PlayerInteractions : MonoBehaviour
             thirdPersonController.MoveSpeed = 0;
             thirdPersonController.SprintSpeed = 0;
             thirdPersonController.JumpHeight = 0;
-          thirdPersonController.CanMove = false;
+            thirdPersonController.CanMove = false;
+            transform.SetParent(GameObject.FindGameObjectWithTag("Ship").transform);
             
 
         }
-
-        
-    
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,7 +45,8 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ShipWheel"))
         {
-            isShipDriving = false;
+            Debug.Log("Gemi kullanýmý bitti");
+            //isShipDriving = false;
         }
     }
 }
