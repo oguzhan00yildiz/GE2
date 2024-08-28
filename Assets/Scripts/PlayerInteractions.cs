@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
+    private bool isPlayerOnTheWheel = false;
     public bool isShipDriving = false;
     private  CharacterController characterController;
     private ThirdPersonController thirdPersonController;
@@ -18,9 +19,10 @@ public class PlayerInteractions : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)&&isShipDriving)
+        if (Input.GetKeyDown(KeyCode.E)&&isPlayerOnTheWheel)
         {
-            Debug.Log("Gemi kullaniliyor");
+            isShipDriving=true;
+            Debug.Log("Ship is moving");
             thirdPersonController.MoveSpeed = 0;
             thirdPersonController.SprintSpeed = 0;
             thirdPersonController.JumpHeight = 0;
@@ -35,8 +37,8 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ShipWheel"))
         {
-            Debug.Log("Gemiyi Kullanmak icin E tusuna bas");
-            isShipDriving = true;
+            Debug.Log("Press E to Drive the Ship");
+            isPlayerOnTheWheel = true;
 
         }
     }
@@ -45,7 +47,7 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ShipWheel"))
         {
-            Debug.Log("Gemi kullanýmý bitti");
+            Debug.Log("Ship is not using anymore");
             //isShipDriving = false;
         }
     }
