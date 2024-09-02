@@ -28,6 +28,7 @@ public class PlayerInteractions : MonoBehaviour
             thirdPersonController.JumpHeight = 0;
             thirdPersonController.CanMove = false;
             transform.SetParent(GameObject.FindGameObjectWithTag("Ship").transform);
+            animator.SetBool("Driving", true);
             
 
         }
